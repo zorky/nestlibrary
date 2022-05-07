@@ -29,6 +29,7 @@ export class CartController {
   @UseGuards(JwtAuthGuard)
   @Get()
   async getItemsInCart(@Request() req): Promise<CartEntity[]> {
+    console.log(req.user.username);
     return await this.cartService.getItemsInCard(req.user.username);
   }
 }

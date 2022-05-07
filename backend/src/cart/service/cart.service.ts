@@ -55,7 +55,11 @@ export class CartService {
     return null;
   }
   async getItemsInCard(user: string): Promise<CartEntity[]> {
-    const userCart = await this.cartRepository.find({ relations: ["item",'user'] });
-    return (await userCart).filter(item => item.user.username === user)
+    const userCart = await this.cartRepository.find({
+      relations: ['item', 'user'],
+    });
+    console.log(`user : ${user}`);
+    console.dir(userCart);
+    return (await userCart).filter((item: CartEntity) => item.user !== null).filter((item) => item.user.username === user);
   }
 }
