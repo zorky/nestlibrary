@@ -6,6 +6,8 @@ import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './user.entity';
 import { AuthController } from './controller/auth.controller';
+import { LocalStrategy } from './local.strategy';
+import { JwtStrategy } from './jwt-strategy';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Users]),
@@ -15,7 +17,7 @@ import { AuthController } from './controller/auth.controller';
       signOptions: { expiresIn: '60m' },
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}

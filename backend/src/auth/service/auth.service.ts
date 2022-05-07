@@ -12,6 +12,8 @@ export class AuthService {
     private jwt: JwtService,
   ) {}
   async signup(user: Users): Promise<Users> {
+    console.log(user);
+    console.log(`user : ${user.username} - passe : ${user.password}`);
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(user.password, salt);
     user.password = hash;
@@ -29,7 +31,8 @@ export class AuthService {
     }
     return null;
   }
-  async login(user: any) {
+  async login(user: Users) {
+    console.log(user);
     const payload = { username: user.username, sub: user.id, role: user.role };
     return {
       access_token: this.jwt.sign(payload),

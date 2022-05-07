@@ -28,6 +28,8 @@
 
 Tutoriel issu du billet https://betterprogramming.pub/building-an-e-commerce-api-using-nestjs-sqlite-and-typeorm-25a7978de666 
 
+Autre en français : https://www.premieroctet.com/blog/bootstraper-api-avec-nestjs
+
 ## Installation
 
 ```bash
